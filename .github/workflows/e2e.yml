@@ -72,6 +72,15 @@ jobs:
         working-directory: frontend
         run: npm run preview &
 
+      - name: Diagnostico reset endpoint
+        run: |
+          echo "=== NODE_ENV: $NODE_ENV ==="
+          echo "=== Test reset endpoint ==="
+          curl -s -o /tmp/reset_resp.txt -w "\nHTTP_STATUS:%{http_code}" -X POST http://localhost:3000/api/test/reset -H "Content-Type: application/json"
+          cat /tmp/reset_resp.txt
+          echo "=== Products endpoint ==="
+          curl -s http://localhost:3000/api/products | head -c 200
+
       - name: Ejecutar pruebas Cypress
         uses: cypress-io/github-action@v6
         with:
