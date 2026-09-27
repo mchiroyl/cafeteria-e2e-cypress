@@ -8,5 +8,8 @@
   "devDependencies": {
     "cypress": "^13.0.0",
     "typescript": "^5.0.0"
+  },
+  "allowScripts": {
+    "cypress@13.17.0": true
   }
 }
