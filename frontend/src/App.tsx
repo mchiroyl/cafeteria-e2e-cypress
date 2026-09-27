@@ -27,7 +27,7 @@ export default function App() {
   }
 
   const changeQty = (productId: number, qty: number) => {
-    if (qty < 1) return
+    if (isNaN(qty)) return
     setCart(prev => prev.map(i =>
       i.product.id === productId ? { ...i, quantity: qty } : i
     ))
@@ -36,6 +36,11 @@ export default function App() {
   const confirmOrder = async () => {
     if (cart.length === 0) {
       setError('EMPTY_CART')
+      return
+    }
+    const hasInvalidQty = cart.some(i => i.quantity < 1)
+    if (hasInvalidQty) {
+      setError('INVALID_QUANTITY')
       return
     }
     setLoading(true)
