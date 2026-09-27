@@ -1,5 +1,7 @@
 # Cafetería E2E — Sistema de Pedidos con Cypress
 
+[![E2E Tests](https://github.com/mchiroyl/cafeteria-e2e-cypress/actions/workflows/e2e.yml/badge.svg)](https://github.com/mchiroyl/cafeteria-e2e-cypress/actions/workflows/e2e.yml)
+
 Aplicación full-stack con pruebas end-to-end automatizadas.
 
 ## Arquitectura
@@ -88,3 +90,8 @@ Claude (Anthropic) fue utilizado para estructurar los atributos
 `data-cy`, revisar las aserciones de `cy.intercept()` y organizar
 la estrategia de datos de prueba. Todas las pruebas fueron
 revisadas, comprendidas e implementadas por el autor.
+
+## Contribuidor
+
+- **mchiroyl** — [@mchiroyl](https://github.com/mchiroyl)
+
