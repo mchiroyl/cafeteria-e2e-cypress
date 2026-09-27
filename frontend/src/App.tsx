@@ -64,16 +64,22 @@ export default function App() {
   if (order) return <OrderConfirmation result={order} onNew={newOrder} />
 
   return (
-    <main>
-      <h1>Cafetería E2E</h1>
-      <ProductList products={products} onAdd={addToCart} />
-      <Cart
-        items={cart}
-        onChangeQty={changeQty}
-        onConfirm={confirmOrder}
-        loading={loading}
-        error={error}
-      />
-    </main>
+    <div>
+      <header className="app-header">
+        <span className="brand-badge">Specialty Coffee & Bakery</span>
+        <h1>Cafetería E2E</h1>
+        <p className="header-subtitle">Selecciona tus especialidades y realiza tu pedido al instante</p>
+      </header>
+      <main className="app-layout">
+        <ProductList products={products} onAdd={addToCart} />
+        <Cart
+          items={cart}
+          onChangeQty={changeQty}
+          onConfirm={confirmOrder}
+          loading={loading}
+          error={error}
+        />
+      </main>
+    </div>
   )
 }
