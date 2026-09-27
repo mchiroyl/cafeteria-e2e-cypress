@@ -8,7 +8,11 @@ router.get('/', async (_req, res) => {
     const result = await pool.query(
       'SELECT id, name, price, available, stock FROM products ORDER BY id'
     )
-    res.json(result.rows)
+    const products = result.rows.map(p => ({
+      ...p,
+      price: Number(p.price)
+    }))
+    res.json(products)
   } catch {
     res.status(500).json({ error: 'SERVER_ERROR' })
   }

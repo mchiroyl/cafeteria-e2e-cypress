@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function Cart({ items, onChangeQty, onConfirm, loading, error }: Props) {
-  const total = items.reduce((sum, i) => sum + i.product.price * i.quantity, 0)
+  const total = items.reduce((sum, i) => sum + Number(i.product.price) * i.quantity, 0)
 
   return (
     <section>
@@ -29,11 +29,11 @@ export function Cart({ items, onChangeQty, onConfirm, loading, error }: Props) {
             data-cy="cart-item-qty"
             onChange={e => onChangeQty(i.product.id, Number(e.target.value))}
           />
-          <span>Q{(i.product.price * i.quantity).toFixed(2)}</span>
+          <span>Q{(Number(i.product.price) * i.quantity).toFixed(2)}</span>
         </div>
       ))}
 
-      <p>Total: <strong data-cy="cart-total">Q{total.toFixed(2)}</strong></p>
+      <p>Total: <strong data-cy="cart-total">Q{Number(total).toFixed(2)}</strong></p>
 
       {error && <p data-cy="error-message" style={{ color: 'red' }}>{error}</p>}
 

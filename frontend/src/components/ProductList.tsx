@@ -12,7 +12,7 @@ export function ProductList({ products, onAdd }: Props) {
       {products.map(p => (
         <div key={p.id} data-cy="product-item">
           <span>{p.name}</span>
-          <span> — Q{p.price.toFixed(2)}</span>
+          <span> — Q{Number(p.price).toFixed(2)}</span>
           <span data-cy="product-availability">
             {p.available && p.stock > 0
               ? ' ✅ Disponible'

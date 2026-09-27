@@ -27,8 +27,9 @@ router.post('/', async (req, res) => {
         await client.query('ROLLBACK')
         return res.status(400).json({ error: 'OUT_OF_STOCK', productId: item.productId })
       }
-      total += product.price * item.quantity
-      resolvedItems.push({ ...item, unitPrice: product.price })
+      const unitPrice = Number(product.price)
+      total += unitPrice * item.quantity
+      resolvedItems.push({ ...item, unitPrice })
 
       await client.query(
         'UPDATE products SET stock = stock - $1 WHERE id = $2',
